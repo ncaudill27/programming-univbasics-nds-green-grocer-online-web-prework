@@ -50,9 +50,10 @@ def apply_coupons(cart, coupons)
     coupon = find_item_by_name_in_collection(item_name, coupons)
     
     if coupon && item[:count] >= coupon[:num]
+      couponed_item = coupon(coupon, item)
+      cart << couponed_item
+      item[:count] -= coupon[:num]
       binding.pry
-      cart << coupon(coupon, item)
-      item[:count] %= coupon[:num]
     end
     
     i += 1
