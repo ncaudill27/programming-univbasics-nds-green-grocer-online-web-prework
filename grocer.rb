@@ -32,15 +32,6 @@ def consolidate_cart(cart)
 return_cart
 end
 
-def coupon(coupon, item)
-  {
-    :item => "#{item[:item]} W/COUPON",
-    :price => coupon[:cost] / coupon[:num],
-    :clearance => item[:clearance],
-    :count => coupon[:num]
-  }
-end
-
 def apply_coupons(cart, coupons)
   i = 0
   
@@ -51,7 +42,12 @@ def apply_coupons(cart, coupons)
     
     if coupon
       if coupon && item[:count] >= coupon[:num]
-        couponed_item = coupon(coupon, item)
+        couponed_item = Hash[
+          :item => "#{item[:item]} W/COUPON",
+          :price => coupon[:cost] / coupon[:num],
+          :clearance => item[:clearance],
+          :count => coupon[:num]
+        ]
         cart << couponed_item
         item[:count] -= coupon[:num]
       elsif find_item_by_name_in_collection(couponed_item, cart)
