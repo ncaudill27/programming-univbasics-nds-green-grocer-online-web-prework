@@ -57,6 +57,7 @@ def apply_coupons(cart, coupons)
         binding.pry
       elsif find_item_by_name_in_collection(couponed_item, cart)
         couponed_item[:count] += coupon[:num]
+      end
     end
     
     i += 1
