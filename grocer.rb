@@ -43,7 +43,7 @@ def apply_coupons(cart, coupons)
     coupon_in_cart = find_item_by_name_in_collection(coupon, cart)
     
     if coupon && item[:count] >= coupon[:num]
-      if coupon
+      if !coupon_in_cart
         couponed_item = Hash[
           :item => couponed_name,
           :price => coupon[:cost] / coupon[:num],
