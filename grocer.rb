@@ -86,7 +86,7 @@ def checkout(cart, coupons)
 	total_count = 0
 	new_cart.size.times do |i|
 		item = cart[i]
-		total_count += item[:price]
+		total_count += item[:price] * item[:count]
 	end
 
 	if total_count >= 100
