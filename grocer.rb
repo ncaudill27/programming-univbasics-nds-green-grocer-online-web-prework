@@ -85,7 +85,7 @@ def checkout(cart, coupons)
 
 	total_count = 0
 	new_cart.size.times do |i|
-		item = cart[i]
+		item = new_cart[i]
 		total_count += item[:price] * item[:count]
 	end
 
