@@ -81,10 +81,10 @@ end
 def checkout(cart, coupons)
 	count_items = consolidate_cart(cart)
 	couponed_items = apply_coupons(count_items, coupons)
-	apply_clearance(couponed_items)
+	new_cart = apply_clearance(couponed_items)
 
 	total_count = 0
-	cart.size.times do |i|
+	new_cart.size.times do |i|
 		item = cart[i]
 		total_count += item[:price]
 	end
